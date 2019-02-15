@@ -22,103 +22,100 @@ class MyRegist extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Container(
-            child: Text("REGISTER"),
-            margin: EdgeInsets.fromLTRB(60, 20, 0, 50)),
-      ),
-     body: Builder(
-        // Create an inner BuildContext so that the onPressed methods
-        // can refer to the Scaffold with Scaffold.of().
-        builder: (BuildContext context) {
-      return Form(
-        key: _formKey,
-        child: ListView(
-          children: <Widget>[
-            Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: "jonde@mail.com",
-                  icon: Icon(Icons.email),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                controller: textControl[0],
-                onSaved: (value) => print(value),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "กรุณาระบุ user";
-                  } else if (value
-                          .compareTo(ListAccount.getAccount(0).name) ==
-                      0) {
-                    check = true;
-                  }
-                },
-              ),
-              margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            ),
-            Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: "•••••••",
-                  icon: Icon(Icons.lock),
-                ),
-                obscureText: true,
-                controller: textControl[1],
-                onSaved: (value) => print(value),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "กรุณาระบุ password";
-                  }
-                },
-              ),
-              margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            ),
-            Container(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  hintText: "•••••••",
-                  icon: Icon(Icons.lock),
-                ),
-                obscureText: true,
-                controller: textControl[2],
-                onSaved: (value) => print(value),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "กรุณาระบุ password";
-                  }
-                },
-              ),
-              margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            ),
-            Container(
-              child: RaisedButton(
-                child: Text("CONTINUE", style: TextStyle(color: Colors.white)),
-                color: Theme.of(context).accentColor,
-               onPressed: () {
-                  if (!_formKey.currentState.validate()) {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text("กรุณาระบุข้อมูลให้ครบถ้วน"),
-                    ));
-                  }else if(check){
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text("user นี้มีอยู่ในระบบแล้ว"),
-                    ));
-                  }
-                  else{
-                     Navigator.pop(context);
-                  }
-                  check = false;
-                },
-              ),
-              margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
-            )
-          ],
+        appBar: AppBar(
+          title: Container(
+              child: Text("REGISTER"),
+              margin: EdgeInsets.fromLTRB(60, 20, 0, 50)),
         ),
-      );
-
-        })
-      
-    );
+        body: Builder(
+            // Create an inner BuildContext so that the onPressed methods
+            // can refer to the Scaffold with Scaffold.of().
+            builder: (BuildContext context) {
+          return Form(
+            key: _formKey,
+            child: ListView(
+              children: <Widget>[
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "jonde@mail.com",
+                      icon: Icon(Icons.email),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: textControl[0],
+                    onSaved: (value) => print(value),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "กรุณาระบุ user";
+                      } else if (value
+                              .compareTo(ListAccount.getAccount(0).name) ==
+                          0) {
+                        check = true;
+                      }
+                    },
+                  ),
+                  margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                ),
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "•••••••",
+                      icon: Icon(Icons.lock),
+                    ),
+                    obscureText: true,
+                    controller: textControl[1],
+                    onSaved: (value) => print(value),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "กรุณาระบุ password";
+                      }
+                    },
+                  ),
+                  margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                ),
+                Container(
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "•••••••",
+                      icon: Icon(Icons.lock),
+                    ),
+                    obscureText: true,
+                    controller: textControl[2],
+                    onSaved: (value) => print(value),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "กรุณาระบุ password";
+                      }
+                    },
+                  ),
+                  margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                ),
+                Container(
+                  child: RaisedButton(
+                    child:
+                        Text("CONTINUE", style: TextStyle(color: Colors.white)),
+                    color: Theme.of(context).accentColor,
+                    onPressed: () {
+                      if (!_formKey.currentState.validate()) {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text("กรุณาระบุข้อมูลให้ครบถ้วน"),
+                        ));
+                      } else if (check) {
+                        Scaffold.of(context).showSnackBar(SnackBar(
+                          content: Text("user นี้มีอยู่ในระบบแล้ว"),
+                        ));
+                      } else {
+                        Navigator.pop(context);
+                      }
+                      check = false;
+                    },
+                  ),
+                  margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                )
+              ],
+            ),
+          );
+        }));
   }
 }
 

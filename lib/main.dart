@@ -14,11 +14,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
       routes: {
-        "/": (context) =>LoginScreen(),
-        "/regist" :(context) => RegisterScreen(),
-        "/Main" :(context) => MainScreen()
-
-        },
+        "/": (context) => LoginScreen(),
+        "/regist": (context) => RegisterScreen(),
+        "/Main": (context) => MainScreen()
+      },
     );
   }
 }
