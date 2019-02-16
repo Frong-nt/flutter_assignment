@@ -88,7 +88,14 @@ class Myform extends State<LoginScreen> {
                     Scaffold.of(context).showSnackBar(SnackBar(
                       content: Text("user or password ไม่ถูกต้อง"),
                     ));
-                  } else {
+                  }
+                  else if ((checkAdmin[0] == false &&
+                      checkAdmin[1] == false)) {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text("user or password ไม่ถูกต้อง"),
+                    ));
+                      } 
+                  else {
                     Navigator.pushNamed(context, "/Main");
                   }
                   checkAdmin[0] = false;
